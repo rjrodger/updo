@@ -1,6 +1,6 @@
 {
   "name": "updo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Interpolate values from a shared context into a string template.",
   "main": "updo.js",
   "types": "updo.d.js",
