@@ -1,0 +1,48 @@
+{
+  "name": "inks",
+  "version": "1.0.2",
+  "description": "Interpolate values from a shared context into a string template.",
+  "main": "inks.js",
+  "types": "inks.d.js",
+  "scripts": {
+    "tsc:w": "tsc -w -d",
+    "tsc": "tsc -d",
+    "test": "lab -P test -v -t 95",
+    "coveralls": "lab -s -P test -r lcov | coveralls",
+    "prettier": "prettier --write --no-semi --single-quote *.ts *.js lib/*.js test/*.js",
+    "clean": "rm -rf node_modules yarn.lock package-lock.json",
+    "reset": "npm run clean && npm i && npm test",
+    "repo-tag": "REPO_VERSION=`node -e \"console.log(require('./package').version)\"`; echo TAG: v$REPO_VERSION && git commit -a -m v$REPO_VERSION && git push && git tag v$REPO_VERSION && git push --tags;",
+    "repo-publish": "npm run clean && npm i && npm run tsc && npm run prettier && npm test && npm run repo-tag && npm publish --registry http://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjrodger/inks.git"
+  },
+  "keywords": [
+    "interpolate",
+    "string",
+    "template",
+    "backtick"
+  ],
+  "author": "Richard Rodger richardrodger.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rjrodger/inks/issues"
+  },
+  "homepage": "https://github.com/rjrodger/inks#readme",
+  "devDependencies": {
+    "@hapi/code": "^7.0.0",
+    "@hapi/lab": "^21.0.0",
+    "@types/node": "^12.11.7",
+    "coveralls": "^3.0.7",
+    "prettier": "^1.18.2",
+    "typescript": "^3.6.4"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "inks.*",
+    "*.json"
+  ]
+}
