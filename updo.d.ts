@@ -1,9 +1,9 @@
-declare const Nua: any;
+declare const Nua: any
 interface Operation {
-    name?: string;
-    op?: string;
-    id?: string;
-    when?: () => number;
-    args?: any[];
+  name?: string
+  op?: string
+  id?: string
+  when?: () => number
+  args?: any[]
 }
-declare function Updo(opts: any): any;
+declare function Updo(opts: any): any

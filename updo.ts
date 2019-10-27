@@ -10,13 +10,12 @@ const Nua = require('nua')
 module.exports = Updo
 
 interface Operation {
-  name?: string,
-  op?: string,
-  id?: string,
-  when?: () => number,
+  name?: string
+  op?: string
+  id?: string
+  when?: () => number
   args?: any[]
 }
-
 
 // TODO: option to drop older data
 // TODO: ability to dynamically reset options
@@ -48,8 +47,8 @@ function Updo(opts: any) {
     if (null == op) return
 
     var opname: string | undefined = op.op || op.name
-    if(null == opname) return new Error('Operation has no name: '+JSON.stringify(op))
-
+    if (null == opname)
+      return new Error('Operation has no name: ' + JSON.stringify(op))
 
     var opfunc = self[opname]
 
@@ -109,7 +108,10 @@ function Updo(opts: any) {
   }
 
   // TODO: 'tree' is hard-coded!
-  self.walk = function(childprop: string, filter: (obj: any) => boolean): any[] {
+  self.walk = function(
+    childprop: string,
+    filter: (obj: any) => boolean
+  ): any[] {
     var found: any[] = []
     filter =
       'function' === typeof filter
@@ -128,8 +130,8 @@ function Updo(opts: any) {
     childprop: string,
     filter: (obj: any) => boolean,
     found: any[],
-    path: any)
-  {
+    path: any
+  ) {
     if (!obj) return
     //path = Lodash.clone(path)
     path = self.util.clone(path)
