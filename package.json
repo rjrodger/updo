@@ -1,9 +1,9 @@
 {
-  "name": "oppo",
+  "name": "updo",
   "version": "0.0.1",
   "description": "Interpolate values from a shared context into a string template.",
-  "main": "oppo.js",
-  "types": "oppo.d.js",
+  "main": "updo.js",
+  "types": "updo.d.js",
   "scripts": {
     "watch": "tsc -w -d",
     "build": "tsc -d",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rjrodger/oppo.git"
+    "url": "git+https://github.com/rjrodger/updo.git"
   },
   "keywords": [],
   "author": "Richard Rodger richardrodger.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rjrodger/oppo/issues"
+    "url": "https://github.com/rjrodger/updo/issues"
   },
-  "homepage": "https://github.com/rjrodger/oppo#readme",
+  "homepage": "https://github.com/rjrodger/updo#readme",
   "devDependencies": {
     "@hapi/code": "^7.0.0",
     "@hapi/lab": "^21.0.0",
@@ -37,7 +37,7 @@
   "files": [
     "README.md",
     "LICENSE",
-    "oppo.*",
+    "updo.*",
     "*.json"
   ],
   "dependencies": {
