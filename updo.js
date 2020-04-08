@@ -13,11 +13,11 @@ function Updo(opts) {
   var opid = opts.id
   var when =
     opts.when ||
-    function() {
+    function () {
       return Date.now()
     }
   var preserve = null == opts.preserve ? true : !!opts.preserve
-  var log = (true === opts.log ? console.log : opts.log || function() {}).bind(
+  var log = (true === opts.log ? console.log : opts.log || function () {}).bind(
     self
   )
   self._opcount = 0
@@ -26,7 +26,7 @@ function Updo(opts) {
   self._hist = []
   self._data = Object.assign({}, opts.data)
   self.log = log
-  self['do'] = function(op) {
+  self['do'] = function (op) {
     if (null == op) return
     var opname = op.op || op.name
     if (null == opname)
@@ -41,10 +41,10 @@ function Updo(opts) {
       self._opindex = self._ops.length
     }
   }
-  self.data = function() {
+  self.data = function () {
     return self._data
   }
-  self.undo = function() {
+  self.undo = function () {
     if (0 < self._opindex) {
       var previndex = self._opindex - 1
       var undo_op = JSON.parse(JSON.stringify(self._ops[previndex]))
@@ -60,7 +60,7 @@ function Updo(opts) {
       self._opindex--
     }
   }
-  self.redo = function() {
+  self.redo = function () {
     if (self._opindex < self._ops.length - 1) {
       var nextindex = self._opindex
       var redo_op = JSON.parse(JSON.stringify(self._ops[nextindex]))
@@ -77,12 +77,12 @@ function Updo(opts) {
     }
   }
   // TODO: 'tree' is hard-coded!
-  self.walk = function(childprop, filter) {
+  self.walk = function (childprop, filter) {
     var found = []
     filter =
       'function' === typeof filter
         ? filter
-        : function() {
+        : function () {
             return true
           }
     walker(self._data.tree, childprop, filter, found, [])
@@ -99,7 +99,7 @@ function Updo(opts) {
       found.push({
         entry: obj,
         // path: Lodash.clone(path)
-        path: self.util.clone(path)
+        path: self.util.clone(path),
       })
     }
     var children = obj[childprop]
@@ -109,7 +109,7 @@ function Updo(opts) {
       walker(children[i], childprop, filter, found, path)
     }
   }
-  self.toString = function() {
+  self.toString = function () {
     return (
       JSON.stringify(self._data) +
       ';' +
@@ -121,9 +121,9 @@ function Updo(opts) {
     )
   }
   self.util = {
-    clone: function(obj) {
+    clone: function (obj) {
       return null == obj ? obj : JSON.parse(JSON.stringify(obj))
-    }
+    },
   }
   return self
 }

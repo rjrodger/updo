@@ -1,6 +1,6 @@
 {
   "name": "updo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Interpolate values from a shared context into a string template.",
   "main": "updo.js",
   "types": "updo.d.js",
@@ -9,7 +9,7 @@
     "build": "tsc -d",
     "test": "lab -P test -v -t 40 -r console -o stdout -r html -o test/coverage.html",
     "coveralls": "lab -s -P test -r lcov | coveralls",
-    "prettier": "prettier --write --no-semi --single-quote *.ts *.js lib/*.js test/*.js",
+    "prettier": "prettier --write *.ts *.js test/*.js",
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm test",
     "repo-tag": "REPO_VERSION=`node -e \"console.log(require('./package').version)\"`; echo TAG: v$REPO_VERSION && git commit -a -m v$REPO_VERSION && git push && git tag v$REPO_VERSION && git push --tags;",

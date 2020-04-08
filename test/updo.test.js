@@ -13,7 +13,7 @@ const describe = lab.describe
 const it = lab.it
 const expect = Code.expect
 
-describe('updo', function() {
+describe('updo', function () {
   it('compiled', async () => {
     expect(
       Fs.statSync(__dirname + '/../updo.ts').mtimeMs,

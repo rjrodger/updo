@@ -26,13 +26,13 @@ function Updo(opts: any) {
   const opid = opts.id
   const when =
     opts.when ||
-    function() {
+    function () {
       return Date.now()
     }
   const preserve = null == opts.preserve ? true : !!opts.preserve
   const log = (true === opts.log
     ? console.log
-    : opts.log || function() {}
+    : opts.log || function () {}
   ).bind(self)
 
   self._opcount = 0
@@ -43,7 +43,7 @@ function Updo(opts: any) {
 
   self.log = log
 
-  self.do = function(op: Operation) {
+  self.do = function (op: Operation) {
     if (null == op) return
 
     var opname: string | undefined = op.op || op.name
@@ -63,11 +63,11 @@ function Updo(opts: any) {
     }
   }
 
-  self.data = function() {
+  self.data = function () {
     return self._data
   }
 
-  self.undo = function() {
+  self.undo = function () {
     if (0 < self._opindex) {
       var previndex = self._opindex - 1
       var undo_op = JSON.parse(JSON.stringify(self._ops[previndex]))
@@ -87,7 +87,7 @@ function Updo(opts: any) {
     }
   }
 
-  self.redo = function() {
+  self.redo = function () {
     if (self._opindex < self._ops.length - 1) {
       var nextindex = self._opindex
       var redo_op = JSON.parse(JSON.stringify(self._ops[nextindex]))
@@ -108,7 +108,7 @@ function Updo(opts: any) {
   }
 
   // TODO: 'tree' is hard-coded!
-  self.walk = function(
+  self.walk = function (
     childprop: string,
     filter: (obj: any) => boolean
   ): any[] {
@@ -116,7 +116,7 @@ function Updo(opts: any) {
     filter =
       'function' === typeof filter
         ? filter
-        : function() {
+        : function () {
             return true
           }
     walker(self._data.tree, childprop, filter, found, [])
@@ -141,7 +141,7 @@ function Updo(opts: any) {
       found.push({
         entry: obj,
         // path: Lodash.clone(path)
-        path: self.util.clone(path)
+        path: self.util.clone(path),
       })
     }
 
@@ -154,7 +154,7 @@ function Updo(opts: any) {
     }
   }
 
-  self.toString = function() {
+  self.toString = function () {
     return (
       JSON.stringify(self._data) +
       ';' +
@@ -167,9 +167,9 @@ function Updo(opts: any) {
   }
 
   self.util = {
-    clone: function(obj: any) {
+    clone: function (obj: any) {
       return null == obj ? obj : JSON.parse(JSON.stringify(obj))
-    }
+    },
   }
 
   return self
