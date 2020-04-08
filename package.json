@@ -7,7 +7,7 @@
   "scripts": {
     "watch": "tsc -w -d",
     "build": "tsc -d",
-    "test": "lab -P test -v -t 40",
+    "test": "lab -P test -v -t 40 -r console -o stdout -r html -o test/coverage.html",
     "coveralls": "lab -s -P test -r lcov | coveralls",
     "prettier": "prettier --write --no-semi --single-quote *.ts *.js lib/*.js test/*.js",
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
@@ -27,12 +27,12 @@
   },
   "homepage": "https://github.com/rjrodger/updo#readme",
   "devDependencies": {
-    "@hapi/code": "^7.0.0",
-    "@hapi/lab": "^21.0.0",
-    "@types/node": "^12.11.7",
-    "coveralls": "^3.0.7",
-    "prettier": "^1.18.2",
-    "typescript": "^3.6.4"
+    "@hapi/code": "^8.0.1",
+    "@hapi/lab": "^22.0.4",
+    "@types/node": "^13.11.0",
+    "coveralls": "^3.0.11",
+    "prettier": "^2.0.4",
+    "typescript": "^3.8.3"
   },
   "files": [
     "README.md",
@@ -41,6 +41,6 @@
     "*.json"
   ],
   "dependencies": {
-    "nua": "0.0.2"
+    "nua": "0.2.0"
   }
 }
